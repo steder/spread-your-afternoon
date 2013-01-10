@@ -15,10 +15,13 @@ block content
         for topic in topics
           tr
             td
-              h3 #{topic[0]}
-            td #{topic[1]}
+              h3 #{topic.name}
+            td #{topic.description}
             td
-              span.badge.badge-success #{topic[2]}
+              if topic.score >= 0
+                span.badge.badge-success #{topic.score}
+              else
+                span.badge.badge-important #{topic.score}
               div.btn-group.btn-group-vertical
                 button.btn.btn-mini.btn-success(type="button")
                   i.icon-plus
