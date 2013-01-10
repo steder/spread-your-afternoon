@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  //h1= title
+  //p Welcome to #{title}
 
   .container
     h2 Choose topics for the next Spread Your Afternoon
@@ -23,3 +23,30 @@ block content
                 i.icon-plus
               button.btn.btn-mini.btn-danger(type="button")
                 i.icon-minus
+        tr
+          td
+            h3 age gates
+          td let\'s discuss our shared love of keeping people from using our site
+          td
+            span.badge.badge-important -2
+            div.btn-group.btn-group-vertical
+              button.btn.btn-mini.btn-success(type="button")
+                i.icon-plus
+              button.btn.btn-mini.btn-danger(type="button")
+                i.icon-minus
+
+    hr
+
+    form.form-horizontal
+      fieldset
+        div.control-group
+          label.control-label Topic
+          div.controls
+            input(type="text", placeholder="We should talk about...")
+        div.control-group
+          label.control-label Details
+          div.controls
+            textarea(rows="4", placeholder="Describe the topic in a few sentences")
+        div.control-group
+          div.controls
+            button.btn(type="submit") Submit
