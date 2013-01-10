@@ -12,28 +12,18 @@ block content
         th description
         th votes
       tbody
-        tr
-          td
-            h3 this site
-          td let\'s talk about this site and how it works
-          td
-            span.badge.badge-success +3
-            div.btn-group.btn-group-vertical
-              button.btn.btn-mini.btn-success(type="button")
-                i.icon-plus
-              button.btn.btn-mini.btn-danger(type="button")
-                i.icon-minus
-        tr
-          td
-            h3 age gates
-          td let\'s discuss our shared love of keeping people from using our site
-          td
-            span.badge.badge-important -2
-            div.btn-group.btn-group-vertical
-              button.btn.btn-mini.btn-success(type="button")
-                i.icon-plus
-              button.btn.btn-mini.btn-danger(type="button")
-                i.icon-minus
+        for topic in topics
+          tr
+            td
+              h3 #{topic[0]}
+            td #{topic[1]}
+            td
+              span.badge.badge-success #{topic[2]}
+              div.btn-group.btn-group-vertical
+                button.btn.btn-mini.btn-success(type="button")
+                  i.icon-plus
+                button.btn.btn-mini.btn-danger(type="button")
+                  i.icon-minus
 
     hr
 
