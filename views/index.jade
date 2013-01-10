@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  .container
+    h2 Choose topics for the next Spread Your Afternoon
+    table
+      thead
+        th topic
+        th description
+        th votes
+      tbody
+        tr
+          td
+            h3 this site
+          td let\'s talk about this site and how it works
+          td
+            span.badge.badge-success +3
+            div.btn-group.btn-group-vertical
+              button.btn.btn-mini.btn-success(type="button")
+                i.icon-plus
+              button.btn.btn-mini.btn-danger(type="button")
+                i.icon-minus
