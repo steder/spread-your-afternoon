@@ -11,8 +11,8 @@
   },
   "dependencies": {
    "express": "3.0.6",
-    "jade": "*",
-    "stylus": "*",
-    "mongodb": "*"
+    "jade": "0.28.1",
+    "stylus": "0.32.0",
+    "mongodb": "1.2.9"
   }
 }
