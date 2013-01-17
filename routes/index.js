@@ -3,16 +3,22 @@
  * GET home page.
  */
 
+var url = require('url');
+
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('afternoondb', server, {safe:true});
 
+var connectionUri = url.parse(process.env.MONGOHQ_URL);
+var dbName = connectionUri.pathname.replace(/^\//, '');
 
+console.log(connectionUri);
+
+var server = new Server(connectionUri.hostname, parseInt(connectionUri.port), {auto_reconnect: true});
+db = new Db(dbName, server, {safe:true});
 db.open(function(err, db) {
     if(!err) {
             console.log("Connected to 'afternoondb' database");
