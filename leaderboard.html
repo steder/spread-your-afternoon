@@ -1,0 +1,38 @@
+<head>
+  <title>Spread Your Afternoon</title>
+</head>
+
+<body>
+  {{loginButtons}}
+  <div id="outer">
+    <h1>What should we talk about?</h1>
+    <p>Help us spread our afternoons by suggesting
+      and voting on topics.
+    </p>
+    {{> topics}}
+  </div>
+</body>
+
+<template name="topics">
+  <input id="new_title" placeholder="Let's talk about..." name="topic" required>
+  <input id="create_topic" type="submit" value="Suggest">
+  <div class="topics">
+    {{#each topics}}
+      {{> topic}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="topic">
+  <div class="topic">
+    <span class="title">{{title}}</span>
+    <span class="votes">{{votes}}</span>
+    <span class="voting">
+      <input class="up" type="submit" value="+1">
+    </span>
+    <span class="voting">
+      <input class="down" type="submit" value="-1">
+    </span>
+
+  </div>
+</template>
