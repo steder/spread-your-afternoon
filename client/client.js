@@ -1,3 +1,7 @@
+// subscriptions:
+Meteor.subscribe("topics");
+
+
 Template.topics.topics = function() {
     return Topics.find({}, {sort: {votes: -1}});
 }
@@ -17,4 +21,4 @@ Template.topics.events({
     'click .down': function() {
         Topics.update(this._id, {$inc: {votes: -1}});
     }
-})
+});
