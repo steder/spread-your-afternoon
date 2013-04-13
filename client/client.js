@@ -1,9 +1,25 @@
 // subscriptions:
 Meteor.subscribe("topics");
 
+Template.topic.color_class = function() {
+    if (this.votes >= 10) {
+        return 'badge-info';
+    } else if (this.votes >= 5) {
+        return 'badge-success';
+    } else if (this.votes > 0) {
+        return '';
+    } else if (this.votes <= -5 ) {
+        return 'badge-important';
+    } else if (this.votes < 0) {
+        return 'badge-warning';
+    } else {
+        return 'badge-inverse';
+    }
+};
+
 Template.topics.topics = function() {
     return Topics.find({}, {sort: {votes: -1}});
-}
+};
 
 Template.topics.events({
     'click #add_topic': function() {
