@@ -33,7 +33,7 @@
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
+      <div class="container-fluid">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -51,27 +51,34 @@
     </div>
   </div>
 
-  <div class="container">
-     {{loginButtons}}
-     <div id="outer">
-       <h1 class="page-header">About</h1>
-       <p>
-         Help us spread our afternoons by suggesting
-         and voting on topics.
-       </p>
-       <h2>Topics</h2>
-       {{> topics}}
+  <div class="container-fluid">
+     <div class="row-fluid">
+       <div class="span3">
+         {{loginButtons}}
+       </div>
+       <div class="span9">
+         <h1 class="page-header">We love talking!</h1>
+         <p>
+           Help us spread our afternoons by suggesting
+           and voting on topics.
+         </p>
+         <h2>Topics</h2>
+         {{> topics}}
+       </div>
      </div>
   </div>
 </body>
 
 <template name="topics">
   <a id="add_topic">Add a topic</a>
-  <fieldset id="new_topic_form" style="display: none;">
-    <input id="new_title" placeholder="Let's talk about..." name="topic" required><br/>
-    <textarea id="description" name="description" rows="4" cols="50" placeholder="Provide a little more detail here..."></textarea>
-    <input id="create_topic" type="submit" value="Suggest">
-  </fieldset>
+  <form class=".form-horizontal">
+    <fieldset id="new_topic_form" style="display: none;">
+      <input type="text" id="new_title" placeholder="Let's talk about..." name="topic" required><br/>
+      <textarea id="description" name="description" rows="4" cols="50" placeholder="Provide a little more detail here..."></textarea>
+      <button class="btn" id="create_topic">Suggest</button>
+      <button class="btn" id="cancel_create_topic">Nevermind</button>
+    </fieldset>
+  </form>
   <div class="topics accordion" id="topic-accordion">
     {{#each topics}}
       {{> topic}}
@@ -85,8 +92,9 @@
       <span class="votes badge {{color_class}}">{{votes}}</span>
       <a class="title accordion-toggle" data-toggle="collapse" data-parent="#topic-accordion" href="#accordion_{{_id}}">{{title}}</a>
       <div class="btn-group">
-        <button class="btn btn-small voting up">+1</button>
-        <button class="btn btn-small voting down">-1</button>
+        <!-- if you've already voted up or down we should add a class like .btn-success or .btn-danger -->
+        <button class="btn btn-small voting up"><i class="icon-chevron-up"></i></button>
+        <button class="btn btn-small voting down"><i class="icon-chevron-down"></i></button>
       </div>
     </div>
     <div id="accordion_{{_id}}" class="accordion-body collapse">
