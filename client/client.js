@@ -13,9 +13,11 @@ Template.topics.events({
     'click #create_topic': function() {
         console.log("Creating topic...");
         var new_title = document.getElementById("new_title");
+        var desc = document.getElementById("description");
         console.log("New Title:" + new_title.value);
         Topics.insert({title: new_title.value,
-                       votes: 0
+                       votes: 0,
+                       description: desc.value,
                       });
         $("#new_topic_form").hide();
         $("#add_topic").show();

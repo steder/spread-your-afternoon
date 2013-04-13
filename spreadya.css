@@ -64,3 +64,9 @@ body {
 .hidden {
     display: none;
 }
+
+.description {
+    background-color: #0AEEF2;
+    border: 1px solid black;
+    margin-left: 2em;
+}
