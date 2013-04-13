@@ -4,6 +4,20 @@
 Topics = new Meteor.Collection("topics");
 
 
+Topics.allow({
+    insert: function (userId, topic) {
+        return true;
+    },
+    update: function (userId, topic, fields, modifier) {
+        return true;
+    },
+    remove: function (userId, topic) {
+        return true;
+    },
+    //fetch: ['owner']
+});
+
+
 if (Meteor.isClient) {
 }
 

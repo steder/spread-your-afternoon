@@ -14,8 +14,12 @@
 </body>
 
 <template name="topics">
-  <input id="new_title" placeholder="Let's talk about..." name="topic" required>
-  <input id="create_topic" type="submit" value="Suggest">
+  <a href="#" id="add_topic">Add a topic</a>
+  <fieldset id="new_topic_form" class="hidden">
+    <input id="new_title" placeholder="Let's talk about..." name="topic" required><br/>
+    <textarea id="description" name="description" rows="4" cols="50" placeholder="Provide a little more detail here..."></textarea>
+    <input id="create_topic" type="submit" value="Suggest">
+  </fieldset>
   <div class="topics">
     {{#each topics}}
       {{> topic}}
