@@ -1,5 +1,6 @@
 // subscriptions:
 Meteor.subscribe("topics");
+Meteor.subscribe("userData");
 
 Template.controls.events({
     'click #add_topic': function(event) {
@@ -15,6 +16,7 @@ Template.controls.events({
         Topics.insert({title: new_title.value,
                        votes: 0,
                        description: desc.value,
+                       owner: Meteor.userId()
                       });
         $("#new_topic_form").hide();
         $("#add_topic").show();
@@ -39,6 +41,21 @@ Template.topic.color_class = function() {
     } else {
         return 'badge-inverse';
     }
+};
+
+Template.topic.is_owner = function() {
+    if (this.owner == Meteor.userId() ||
+        Meteor.user().admin == true) {
+        return true;
+    }
+    return false;
+};
+
+Template.topic.is_admin = function() {
+    if (Meteor.user().admin == true) {
+        return true;
+    }
+    return false;
 };
 
 Template.topics.topics = function() {

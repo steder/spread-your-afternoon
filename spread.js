@@ -12,7 +12,7 @@ Topics.allow({
         return true;
     },
     remove: function (userId, topic) {
-        return true;
+        return userId == topic.owner;
     },
     //fetch: ['owner']
 });

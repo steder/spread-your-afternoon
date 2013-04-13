@@ -14,5 +14,18 @@ Meteor.publish("topics", function () {
     return Topics.find();
 });
 
+Meteor.publish("userData", function () {
+    return Meteor.users.find({_id: this.userId},
+                             {fields: {'admin': 1}});
+});
+
 Meteor.startup(function () {
+});
+
+Accounts.onCreateUser(function(options, user) {
+    user.admin = false;
+    // We still want the default hook's 'profile' behavior.
+    if (options.profile)
+        user.profile = options.profile;
+    return user;
 });
