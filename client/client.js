@@ -1,6 +1,30 @@
 // subscriptions:
 Meteor.subscribe("topics");
 
+Template.controls.events({
+    'click #add_topic': function(event) {
+        $("#new_topic_form").show();
+        $("#add_topic").hide();
+    },
+   'click #create_topic': function(event) {
+        event.preventDefault(); // prevent the form from actually submitting
+        console.log("Creating topic...");
+        var new_title = document.getElementById("new_title");
+        var desc = document.getElementById("description");
+        console.log("New Title:" + new_title.value);
+        Topics.insert({title: new_title.value,
+                       votes: 0,
+                       description: desc.value,
+                      });
+        $("#new_topic_form").hide();
+        $("#add_topic").show();
+    },
+    'click #cancel_create_topic': function(event) {
+        $("#new_topic_form").hide();
+        $("#add_topic").show();
+    }
+});
+
 Template.topic.color_class = function() {
     if (this.votes >= 10) {
         return 'badge-info';

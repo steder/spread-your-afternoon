@@ -55,6 +55,7 @@
      <div class="row-fluid">
        <div class="span3">
          {{loginButtons}}
+         {{> controls}}
        </div>
        <div class="span9">
          <h1 class="page-header">We love talking!</h1>
@@ -69,16 +70,21 @@
   </div>
 </body>
 
-<template name="topics">
+<template name="controls">
+<div>
   <a id="add_topic">Add a topic</a>
-  <form class=".form-horizontal">
-    <fieldset id="new_topic_form" style="display: none;">
+  <form class=".form-horizontal" id="new_topic_form" style="display: none;">
+    <fieldset>
       <input type="text" id="new_title" placeholder="Let's talk about..." name="topic" required><br/>
       <textarea id="description" name="description" rows="4" cols="50" placeholder="Provide a little more detail here..."></textarea>
       <button class="btn" id="create_topic">Suggest</button>
       <button class="btn" id="cancel_create_topic">Nevermind</button>
     </fieldset>
   </form>
+</div>
+</template>
+
+<template name="topics">
   <div class="topics accordion" id="topic-accordion">
     {{#each topics}}
       {{> topic}}
