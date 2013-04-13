@@ -9,6 +9,6 @@ preserve-inputs
 random
 accounts-ui
 accounts-password
-accounts-google
-accounts-github
+#accounts-google
+#accounts-github
 jquery
