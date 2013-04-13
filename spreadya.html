@@ -101,10 +101,21 @@
         <!-- if you've already voted up or down we should add a class like .btn-success or .btn-danger -->
         <button class="btn btn-small voting up"><i class="icon-chevron-up"></i></button>
         <button class="btn btn-small voting down"><i class="icon-chevron-down"></i></button>
+        <button class="btn btn-small edit_topic"><i class="icon-pencil"></i> Edit</button>
+        <button class="btn btn-small btn-danger delete"><i class="icon-trash"></i> Delete</button>
+        <button class="btn btn-small btn-success disabled"><i class="icon-thumbs-up"></i> Approve Topic</button>
       </div>
     </div>
     <div id="accordion_{{_id}}" class="accordion-body collapse">
       <p class="description accordion-inner">{{description}}</p>
+      <form class=".form-horizontal" id="edit_topic_form_{{_id}}" style="display: none;">
+        <fieldset>
+          <input type="text" id="edit_title_{{_id}}" value="{{title}}" name="topic"><br/>
+          <textarea id="edit_description_{{_id}}" name="description" rows="4" cols="50">{{description}}</textarea>
+          <button class="btn save_topic">Save</button>
+          <button class="btn cancel_edit_topic">Nevermind</button>
+        </fieldset>
+      </form>
     </div>
   </div>
 </template>
