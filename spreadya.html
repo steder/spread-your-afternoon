@@ -56,7 +56,10 @@
      <div class="row-fluid">
        <div class="span3">
          {{loginButtons}}
+         <br/>
          {{> controls}}
+         <br/>
+         {{> userslist}}
        </div>
        <div class="span9">
          {{#if currentUser}}
@@ -93,6 +96,37 @@
   </form>
 </div>
 {{/if}}
+</template>
+
+<template name="userslist">
+  <a id="show_userlist">Show Userlist</a>
+  <a id="hide_userlist" style="display: none;">Hide Userlist</a>
+  <table style="display: none;" id="userlist" class="table table-condensed table-striped table-bordered">
+    <thead>
+      <th>email</th>
+      <th>admin</th>
+      <th>org</th>
+    </thead>
+  <tbody>
+  {{#each users}}
+    {{>user}}
+  {{/each}}
+  </tbody>
+  </table>
+</template>
+
+<template name="user">
+  <tr>
+    <td>{{email}}</td>
+    <td>
+      {{#if admin}}
+      <input type="checkbox" checked=1>
+      {{else}}
+      <input type="checkbox" checked=0>
+      {{/if}}
+    </td>
+    <td>{{organization}}</td>
+  </tr>
 </template>
 
 <template name="topics">

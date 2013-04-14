@@ -26,6 +26,27 @@ Template.controls.events({
     }
 });
 
+Template.userslist.users = function() {
+    return Meteor.users.find({});
+};
+
+Template.userslist.events = {
+    "click #show_userlist": function() {
+        $("#show_userlist").hide();
+        $("#hide_userlist").show();
+        $("#userlist").show();
+    },
+    "click #hide_userlist": function() {
+        $("#show_userlist").show();
+        $("#hide_userlist").hide();
+        $("#userlist").hide();
+    }
+}
+
+Template.user.email = function() {
+    return this.emails[0]["address"];
+};
+
 Template.topic.color_class = function() {
     if (this.votes >= 10) {
         return 'badge-info';

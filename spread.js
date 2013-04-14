@@ -21,6 +21,12 @@ Topics.allow({
             allow = true;
         }
 
+        /*
+          Disallowing voting updates, these should go through the Meteor methods:
+          - upvote_topic
+          - unvote_topic
+          - downvote_topic
+        */
         if (_.contains(fields, "votes") || _.contains(fields, "voters")) {
             allow = false;
         }
@@ -35,6 +41,7 @@ Topics.allow({
 });
 
 
+/* TODO: add permission checks here */
 Meteor.methods({
     upvote_topic: function(topic) {
         var userId = Meteor.userId();
