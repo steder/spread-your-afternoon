@@ -112,8 +112,8 @@
       </a>
       <div class="btn-group">
         <!-- if you've already voted up or down we should add a class like .btn-success or .btn-danger -->
-        <button class="btn btn-small voting up"><i class="icon-chevron-up"></i></button>
-        <button class="btn btn-small voting down"><i class="icon-chevron-down"></i></button>
+        <button class="btn btn-small voting up {{highlight_upvoted}}"><i class="icon-chevron-up"></i></button>
+        <button class="btn btn-small voting down {{highlight_downvoted}}"><i class="icon-chevron-down"></i></button>
         {{#if is_owner}}
         <button class="btn btn-small edit_topic"><i class="icon-pencil"></i> Edit</button>
         {{/if}}
