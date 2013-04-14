@@ -1,5 +1,5 @@
 <head>
-  <title>Spread Your Afternoon</title>
+  <title>Voterator</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
@@ -39,7 +39,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="brand">Talkinator</a>
+        <a class="brand">Voterator</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li><a href="#aboutModal" data-toggle="modal">About</a></li>
@@ -56,7 +56,7 @@
     <h3 id="aboutModalLabel">About</h3>
   </div>
   <div class="modal-body">
-    <h4>Submit to the talkinator!</h4>
+    <h4>Submit to the voterator!</h4>
     <ol>
       <li>Create an account.</li>
       <li>Submit a topic</li>
@@ -65,8 +65,11 @@
     </ol>
     <h4>How do we use the moderated topics?</h4>
     <p>
-      Each week an administrator will review the topics and select one of the highest rated topics
-      and schedule it.
+      Each <i>TIME_UNITS</i> the highest voted topic will win!
+    </p>
+    <p>
+      What's winning mean?  Right now it probably means that some nerds will talk about that topic in a dank basement.
+      In the future it could mean whatever you want.
     </p>
   </div>
   <div class="modal-footer">
@@ -88,7 +91,7 @@
          {{#if currentUser}}
          <h1 class="page-header">We love talking!</h1>
          <p>
-           Help us spread our afternoons by suggesting
+           Help us embiggen our afternoons by suggesting
            and voting on topics.
          </p>
          <h2>Topics</h2>
@@ -122,20 +125,30 @@
 </template>
 
 <template name="userslist">
+  {{#if is_admin}}
   <a id="show_userlist">Show Userlist</a>
   <a id="hide_userlist" style="display: none;">Hide Userlist</a>
-  <table style="display: none;" id="userlist" class="table table-condensed table-striped table-bordered">
-    <thead>
-      <th>email</th>
-      <th>admin</th>
-      <th>org</th>
-    </thead>
-  <tbody>
-  {{#each users}}
-    {{>user}}
-  {{/each}}
-  </tbody>
-  </table>
+  <div style="display: none;" id="userlist">
+    <form class="form-search">
+        <div class="input-append">
+          <input type="text" class="search-query">
+          <button type="submit" class="btn">Search</button>
+        </div>
+    </form>
+    <table class="table table-condensed table-striped table-bordered">
+      <thead>
+        <th>email</th>
+        <th>admin</th>
+        <th>org</th>
+      </thead>
+    <tbody>
+    {{#each users}}
+      {{>user}}
+    {{/each}}
+    </tbody>
+    </table>
+  </div>
+  {{/if}}
 </template>
 
 <template name="user">

@@ -2,6 +2,25 @@
 Meteor.subscribe("topics");
 Meteor.subscribe("userData");
 
+/* Global Helpers */
+Handlebars.registerHelper("is_owner", function() {
+    if (this.owner == Meteor.userId()) {
+        return true;
+    } else if (Meteor.user() !== null && Meteor.user() !== undefined) {
+        return Meteor.user().admin;
+    } else {
+        return false;
+    }
+});
+
+Handlebars.registerHelper("is_admin", function() {
+    if (Meteor.user() !== null && Meteor.user() !== undefined) {
+        return Meteor.user().admin;
+    }
+    return false;
+});
+
+/* Templates */
 Template.controls.events({
     'click #add_topic': function(event) {
         $("#new_topic_form").show();
@@ -111,21 +130,6 @@ Template.topic.highlight_downvoted = function() {
             return "btn-danger voted";
         }
     }
-};
-
-Template.topic.is_owner = function() {
-    if (this.owner == Meteor.userId() ||
-        Meteor.user().admin == true) {
-        return true;
-    }
-    return false;
-};
-
-Template.topic.is_admin = function() {
-    if (Meteor.user().admin == true) {
-        return true;
-    }
-    return false;
 };
 
 Template.topics.topics = function() {

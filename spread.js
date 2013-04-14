@@ -43,6 +43,10 @@ Topics.allow({
 
 /* TODO: add permission checks here */
 Meteor.methods({
+    is_admin: function(topic) {
+        var user = Meteor.user();
+        return (user.admin == true);
+    },
     upvote_topic: function(topic) {
         var userId = Meteor.userId();
         var voter_key = "voters."+userId;
