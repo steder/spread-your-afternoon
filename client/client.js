@@ -64,10 +64,10 @@ Template.topics.topics = function() {
 
 Template.topics.events({
     'click .up': function() {
-        Topics.update(this._id, {$inc: {votes: 1}});
+        Meteor.call("upvote_topic", this);
     },
     'click .down': function() {
-        Topics.update(this._id, {$inc: {votes: -1}});
+        Meteor.call("downvote_topic", this);
     },
     'click .delete': function() {
         Topics.remove(this._id);
