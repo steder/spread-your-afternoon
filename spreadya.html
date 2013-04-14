@@ -39,18 +39,41 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="brand">Spread Your Afternoon</a>
+        <a class="brand">Talkinator</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-<!--             <li class="active"><a>Home</a></li>
-            <li><a>About</a></li>
-            <li><a>Contact</a></li> -->
+            <li><a href="#aboutModal" data-toggle="modal">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
 
+<!-- About Modal -->
+<div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="aboutModalLabel">About</h3>
+  </div>
+  <div class="modal-body">
+    <h4>Submit to the talkinator!</h4>
+    <ol>
+      <li>Create an account.</li>
+      <li>Submit a topic</li>
+      <li>Edit that topic until it has a helpful description and encourage folks to vote on it.</li>
+      <li>Vote on any topics you find interesting.</li>
+    </ol>
+    <h4>How do we use the moderated topics?</h4>
+    <p>
+      Each week an administrator will review the topics and select one of the highest rated topics
+      and schedule it.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <!-- <button class="btn btn-primary">Save changes</button> -->
+  </div>
+</div>
 
   <div class="container-fluid">
      <div class="row-fluid">
