@@ -21,6 +21,17 @@ Handlebars.registerHelper("is_admin", function() {
 });
 
 /* Templates */
+
+Template.page_controller.display_page = function () {
+    var path = window.location.href.split("/");
+    var page_index = path[path.length - 1];
+    if (page_index != "") {
+        console.log("page_index:" + String(page_index));
+        return Template[page_index]();
+    }
+    return Template["/"]();
+};
+
 Template.controls.events({
     'click #add_topic': function(event) {
         $("#new_topic_form").show();
