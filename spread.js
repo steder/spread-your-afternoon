@@ -41,6 +41,21 @@ Topics.allow({
 });
 
 
+// Meteor.users.allow({
+//     insert: function (userId, user) {
+//         return false;
+//     },
+//     update: function (userId, user, fields, modifier) {
+//         console.log("update...");
+//         var user = Meteor.users.findOne({_id: userId});
+//         return (userId == user._id || user.admin == true);
+//     },
+//     remove: function (userId, user) {
+//         return false;
+//     }
+// });
+
+
 /* TODO: add permission checks here */
 Meteor.methods({
     is_admin: function(topic) {

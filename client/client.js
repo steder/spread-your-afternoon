@@ -1,6 +1,7 @@
 // subscriptions:
 Meteor.subscribe("topics");
 Meteor.subscribe("userData");
+Meteor.subscribe("allUserData");
 
 /* Global Helpers */
 Handlebars.registerHelper("is_owner", function() {
@@ -70,8 +71,22 @@ Template.userslist.events = {
         $("#show_userlist").show();
         $("#hide_userlist").hide();
         $("#userlist").hide();
+    },
+    "click .trusted": function () {
+        console.log("trusted...");
+        this.trusted = ! this.trusted;
     }
 }
+
+Template.user.admin = function() {
+    var ret = this.admin == true;
+    return ret;
+};
+
+Template.user.trusted = function() {
+    var ret = this.trusted || false;
+    return ret
+};
 
 Template.user.email = function() {
     return this.emails[0]["address"];

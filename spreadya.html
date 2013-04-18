@@ -146,7 +146,7 @@
       <thead>
         <th>email</th>
         <th>admin</th>
-        <th>org</th>
+        <th>trusted</th>
       </thead>
     <tbody>
     {{#each users}}
@@ -163,12 +163,18 @@
     <td>{{email}}</td>
     <td>
       {{#if admin}}
-      <input type="checkbox" checked=1>
+      <input class="admin" type="checkbox" checked=1>
       {{else}}
-      <input type="checkbox" checked=0>
+      <input class="admin" type="checkbox" checked=0>
       {{/if}}
     </td>
-    <td>{{organization}}</td>
+    <td>
+      {{#if trusted}}
+      <input class="trusted" type="checkbox" checked=1>
+      {{else}}
+      <input class="trusted" type="checkbox" checked=0>
+      {{/if}}
+    </td>
   </tr>
 </template>
 
