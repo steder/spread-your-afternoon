@@ -58,7 +58,9 @@ Template.controls.events({
 });
 
 Template.userslist.users = function() {
-    return Meteor.users.find({});
+    console.log("looking up users...")
+    var re = new RegExp(Session.get('searchQuery'), 'i');
+    return Meteor.users.find({emails: {$elemMatch: {address: re}}});
 };
 
 Template.userslist.events = {
@@ -75,7 +77,12 @@ Template.userslist.events = {
     "click .trusted": function () {
         var trusted = ! this.trusted;
         Meteor.users.update({_id:this._id}, {$set:{"trusted":trusted}});
-    }
+    },
+    "click #search-button": function (e) {
+        event.preventDefault(); // prevent the form from actually submitting
+        console.log("setting session value: " + e.target.value);
+        Session.set('searchQuery', e.target.value);
+    },
 }
 
 Template.user.admin = function() {
