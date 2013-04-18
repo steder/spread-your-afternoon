@@ -41,19 +41,19 @@ Topics.allow({
 });
 
 
-// Meteor.users.allow({
-//     insert: function (userId, user) {
-//         return false;
-//     },
-//     update: function (userId, user, fields, modifier) {
-//         console.log("update...");
-//         var user = Meteor.users.findOne({_id: userId});
-//         return (userId == user._id || user.admin == true);
-//     },
-//     remove: function (userId, user) {
-//         return false;
-//     }
-// });
+Meteor.users.allow({
+    insert: function (userId, user) {
+        return false;
+    },
+    update: function (userId, user, fields, modifier) {
+        var user = Meteor.users.findOne({_id: userId});
+        var allow = (userId == user._id || user.admin == true);
+        return allow;
+    },
+    remove: function (userId, user) {
+        return false;
+    }
+});
 
 
 /* TODO: add permission checks here */

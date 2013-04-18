@@ -73,8 +73,8 @@ Template.userslist.events = {
         $("#userlist").hide();
     },
     "click .trusted": function () {
-        console.log("trusted...");
-        this.trusted = ! this.trusted;
+        var trusted = ! this.trusted;
+        Meteor.users.update({_id:this._id}, {$set:{"trusted":trusted}});
     }
 }
 
